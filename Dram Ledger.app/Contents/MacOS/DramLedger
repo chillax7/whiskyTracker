@@ -1,0 +1,25 @@
+#!/bin/bash
+# Thin launcher stub so "Dram Ledger.app" can carry a custom Dock icon.
+# It just hands off to the real launcher script sitting next to the
+# project, opening it in Terminal so you still see progress/logs and
+# can stop the dev server with Ctrl+C.
+set -e
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+MACOS_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+# Contents/MacOS -> Contents -> Dram Ledger.app -> project root
+PROJECT_DIR="$(cd -P "$MACOS_DIR/../../.." && pwd)"
+LAUNCH_SCRIPT="$PROJECT_DIR/Launch Dram Ledger.command"
+
+if [ ! -f "$LAUNCH_SCRIPT" ]; then
+  osascript -e 'display alert "The Dram Ledger" message "Could not find \"Launch Dram Ledger.command\" next to this app. Keep Dram Ledger.app inside the project folder, alongside package.json." as critical'
+  exit 1
+fi
+
+open -a Terminal "$LAUNCH_SCRIPT"
