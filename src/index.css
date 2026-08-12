@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", "Merriweather", ui-serif, Georgia, serif;
+  --font-journal: "Merriweather", ui-serif, Georgia, serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0c0a09;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(120, 53, 15, 0.12), transparent),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 3px);
+}
+
+/* Brass-toned scrollbars for the club's reading room */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #78350f #1c1917;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1c1917;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b45309, #78350f);
+  border-radius: 999px;
+  border: 2px solid #1c1917;
+}
+
+/* Gold-leaf focus ring for form fields */
+.ledger-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #d97706, 0 0 12px rgba(217, 119, 6, 0.35);
+}
+
+/* Fine engraved rule, used under headers */
+.brass-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #92400e, #d97706, #92400e, transparent);
+  opacity: 0.6;
+}
+
+@keyframes scan-sweep {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.scan-line {
+  animation: scan-sweep 2.4s ease-in-out infinite;
+}
