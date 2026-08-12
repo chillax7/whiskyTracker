@@ -34,11 +34,23 @@ camera access to use the bottle scanner.
 
 ### One-click launch on macOS
 
-Double-click **`Launch Dram Ledger.command`** at the project root (or drag it
-onto the Dock and click it there) to install dependencies on first run, start
-the dev server, and open the app in your browser automatically. It locates
-the project by its own file location, so it keeps working wherever you clone
-the repo.
+Two options, both at the project root:
+
+- **`Dram Ledger.app`** — has a custom whisky-glass Dock icon. Drag it onto
+  the Dock and click it there anytime; it opens Terminal, installs
+  dependencies on first run, starts the dev server, and opens the app in
+  your browser. Must stay next to `package.json` (i.e. inside the cloned
+  project) — it locates the project relative to its own bundle.
+- **`Launch Dram Ledger.command`** — the plain-script equivalent, in case you
+  prefer not to run an unsigned `.app`. Double-click, or drag it onto the
+  Dock instead.
+
+Since neither is code-signed, the first time you open one macOS will warn
+it's from an unidentified developer — right-click (or Control-click) it and
+choose **Open** once to approve it. If Gatekeeper instead says the app "is
+damaged" (this can happen if it reached your Mac via a browser/chat download
+rather than `git clone`/`git pull`), clear the quarantine flag in Terminal:
+`xattr -cr "Dram Ledger.app"`.
 
 ```bash
 npm run build   # production build
