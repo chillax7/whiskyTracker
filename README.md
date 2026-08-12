@@ -32,6 +32,14 @@ npm run dev
 Open the printed local URL in a Mac browser (Chrome or Safari) and grant
 camera access to use the bottle scanner.
 
+### One-click launch on macOS
+
+Double-click **`Launch Dram Ledger.command`** at the project root (or drag it
+onto the Dock and click it there) to install dependencies on first run, start
+the dev server, and open the app in your browser automatically. It locates
+the project by its own file location, so it keeps working wherever you clone
+the repo.
+
 ```bash
 npm run build   # production build
 npm run lint    # oxlint
